@@ -19,7 +19,7 @@ public class Project {
 
     private String description;
 
-    private Date  startDate;
+    private Date startDate;
 
     private Date endDate;
 
