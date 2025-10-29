@@ -1,6 +1,8 @@
 package dev.matheuslf.desafio.inscritos.service;
 
 import dev.matheuslf.desafio.inscritos.domain.dto.TaskRequest;
+import dev.matheuslf.desafio.inscritos.domain.dto.TaskStatusDto;
+import dev.matheuslf.desafio.inscritos.domain.model.Status;
 import dev.matheuslf.desafio.inscritos.domain.model.Task;
 import dev.matheuslf.desafio.inscritos.mapper.TaskMapper;
 import dev.matheuslf.desafio.inscritos.repository.ProjectRepository;
@@ -38,4 +40,9 @@ public class TaskService {
         );
     }
 
+    public void updateStatusTask(Long id, TaskStatusDto statusDto){
+        Task task = findById(id);
+        task.setStatus(statusDto.status());
+        repository.save(task);
+    }
 }

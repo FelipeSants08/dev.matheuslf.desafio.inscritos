@@ -6,6 +6,8 @@ import dev.matheuslf.desafio.inscritos.domain.model.Task;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Date;
+
 public class TaskFilter {
 
     public static Specification<Task> taskFilterTitle(String title){

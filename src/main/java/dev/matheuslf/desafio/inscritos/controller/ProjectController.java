@@ -26,8 +26,8 @@ public class ProjectController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Project>> findAll(@RequestParam int page,
-                                                 @RequestParam int item) {
+    public ResponseEntity<Page<Project>> findAll(@RequestParam(required = false, defaultValue = "0") int page,
+                                                 @RequestParam(required = false,defaultValue = "10") int item) {
         return ResponseEntity.ok(projectService.findAll(page, item));
     }
 
