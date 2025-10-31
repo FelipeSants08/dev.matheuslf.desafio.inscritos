@@ -16,9 +16,7 @@ import java.util.List;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
-
-
-
+    
     @ExceptionHandler(exception = MethodArgumentNotValidException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public List<ValidationErrorMessage> handler(MethodArgumentNotValidException exception){
@@ -31,8 +29,13 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(exception = HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorMessage> handler(HttpMessageNotReadableException exception){
-        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), "Não pode estar em branco");
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), "Campo Status e Priority não podem estar em branco");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+    }
 
+    @ExceptionHandler(exception = TaskNotFound.class)
+    public ResponseEntity<ErrorMessage> handler(TaskNotFound exception){
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.toString(), exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 }

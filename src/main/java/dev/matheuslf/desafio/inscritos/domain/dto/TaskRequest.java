@@ -20,8 +20,8 @@ import static dev.matheuslf.desafio.inscritos.specification.TaskFilter.*;
 
 public record TaskRequest (@NotBlank(message = "Campo obrigatório") String title,
                            String description,
-                           @NotBlank(message = "Campo obrigatório") Status status,
-                           @NotBlank(message = "Campo obrigatório") Priority priority,
+                           Status status,
+                           Priority priority,
                            @NotNull(message = "Campo obrigatório")
                            @FutureOrPresent(message = "Não pode ser no passado")
                            Date startDate,
