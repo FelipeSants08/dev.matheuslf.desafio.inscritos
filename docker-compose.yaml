@@ -1,0 +1,30 @@
+services:
+  java:
+    build: .
+    container_name: desafio-escritos-matheus
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: felipe
+    networks:
+      - private_network
+
+  postgres:
+    image: postgres:15
+    container_name: db_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: felipe
+      POSTGRES_DB: desafio-tecnico
+    ports:
+      - "5431:5432"
+    networks:
+      - private_network
+networks:
+  private_network:
+    driver: bridge
